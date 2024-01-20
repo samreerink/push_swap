@@ -6,7 +6,7 @@
 /*   By: sreerink <sreerink@student.codam.nl>        +#+                      */
 /*                                                  +#+                       */
 /*   Created: 2024/01/12 14:34:14 by sreerink      #+#    #+#                 */
-/*   Updated: 2024/01/12 15:03:35 by sreerink      ########   odam.nl         */
+/*   Updated: 2024/01/20 17:29:04 by sreerink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,16 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-typedef struct s_stack
+typedef struct s_list
 {
 	int		n;
-	struct s_stack	*next;
+	struct s_list	*next;
+}	t_list;
+
+typedef struct s_stack
+{
+	s_list	*head;
+	s_list	*last;
 }	t_stack;
 
 #endif
