@@ -6,7 +6,7 @@
 /*   By: sreerink <sreerink@student.codam.nl>        +#+                      */
 /*                                                  +#+                       */
 /*   Created: 2024/01/12 14:34:14 by sreerink      #+#    #+#                 */
-/*   Updated: 2024/01/20 17:29:04 by sreerink      ########   odam.nl         */
+/*   Updated: 2024/01/22 22:56:05 by sreerink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,20 @@
 # include "Libft/libft.h"
 # include <stdio.h>
 # include <stdlib.h>
+# include <stdbool.h>
 # include <unistd.h>
 
-typedef struct s_list
+typedef struct s_node
 {
 	int		n;
-	struct s_list	*next;
-}	t_list;
+	struct s_node	*next;
+}	t_node;
 
 typedef struct s_stack
 {
-	s_list	*head;
-	s_list	*last;
+	t_node	*head;
+	t_node	*last;
+	char	***split_args;
 }	t_stack;
 
 #endif

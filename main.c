@@ -6,7 +6,7 @@
 /*   By: sreerink <sreerink@student.codam.nl>        +#+                      */
 /*                                                  +#+                       */
 /*   Created: 2024/01/12 14:34:24 by sreerink      #+#    #+#                 */
-/*   Updated: 2024/01/20 19:29:42 by sreerink      ########   odam.nl         */
+/*   Updated: 2024/01/23 00:48:35 by sreerink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,77 +15,135 @@
 void	error_exit(t_stack *stack_a, t_stack *stack_b)
 {
 	// free stacks
+	write(STDERR_FILENO, "error\n", 6);
 	exit(EXIT_FAILURE);
 }
 
-t_list	*make_node(char *number, t_list *last)
+t_node	*make_node(char *number, t_node *last)
 {
-	t_list	*new_node;
+	t_node	*new_node;
 
-	new_node = malloc(sizeof(t_list));
+	if (!number)
+		return (NULL);
+	new_node = malloc(sizeof(t_node));
 	if (!new_node)
 		return (NULL);
-	new_node->n = number;
+	new_node->n = ft_atoi(number);
 	new_node->next = NULL;
 	if (last != NULL)
-		last_node->next = new_node;
+		last->next = new_node;
 	return (new_node);
 }
 
-void	make_stack(char *argv[], t_stack *stack)
+bool	check_digits(char *argv[])
 {
 	size_t	i;
 	size_t	j;
-	char	**split_args;
+	int	c;
 
 	i = 1;
-	j = 1;
-	split_args = ft_split(argv[1], ' ');
-	if (!split_args)
-		return (false);
-	stack->head = make_node(split_args[0], NULL);
-	if (!stack->head)
+	j = 0;
+	while (argv[i])
+	{
+		while (argv[i][j])
+		{
+			c = argv[i][j];
+			//printf("%c (check_digits)\n", argv[i][j]);
+			if ((c < 48 || c > 57) && c != 32)
+				return (false);
+			j++;
+		}
+		i++;
+		j = 0;
+	}
+	return (true);
+}
+
+bool	split_arguments(char *argv[], t_stack **stack)
+{
+	size_t	i;
+	size_t	j;
+	char	**temp;
+
+	i = 1;
+	j = 0;
+	if (!check_digits(argv))
 		return (false);
 	while (argv[i])
 	{
-		while (split_args[j])
-		{
-			stack->last = make_node(split_args[j], stack->last);
-			j++;
-		}
-		// free_array(split_args);
+		temp = ft_split(argv[i], ' ');
+		if (!temp)
+			return (false);
+		(*stack)->split_args[j] = temp;
 		i++;
-		j = 0;
-		split_args = ft_split(argv[i], ' ');
-		if (!split
+		j++;
 	}
+	(*stack)->split_args[j] = NULL;
+	return (true);
 }
 
-t_stack	*init_stack(void)
+bool	make_stack(t_stack **stack)
 {
-	t_stack	*new_stack;
+	size_t	i;
+	size_t	j;
+	char	***split_args;
 
-	new_stack = malloc(sizeof(t_stack));
-	if (!new_stack)
-		return (NULL);
-	new_stack->head = NULL;
-	new_stack->last = NULL;
-	return (new_stack);
+	i = 0;
+	j = 1;
+	split_args = (*stack)->split_args;
+	(*stack)->head = make_node(split_args[0][0], NULL);
+	if (!(*stack)->head)
+		return (false);
+	(*stack)->last = (*stack)->head;
+	while (split_args[i])
+	{
+		while (split_args[i][j])
+		{
+			(*stack)->last = make_node(split_args[i][j], (*stack)->last);
+			if (!(*stack)->last)
+				return (false);
+			j++;
+		}
+		i++;
+		j = 0;
+	}
+	return (true);
+}
+
+void	init_stack(t_stack **new_stack)
+{
+	*new_stack = malloc(sizeof(t_stack));
+	if (!*new_stack)
+		return;
+	(*new_stack)->head = NULL;
+	(*new_stack)->last = NULL;
+	(*new_stack)->split_args = malloc(sizeof(char ***));
+	// implement malloc check
 }
 
 int	main(int argc, char *argv[])
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
+	t_node	*print_node; // Only for testing purpose
 
 	if (argc <= 1)
-		error_exit("Invalid amount of arguments\n");
-	stack_a = init_stack;
+		error_exit(NULL, NULL);
+	init_stack(&stack_a);
 	if (!stack_a)
 		error_exit(NULL, NULL);
-	stack_b = init_stack;
+	init_stack(&stack_b);
 	if (!stack_b)
 		error_exit(stack_a, NULL);
-	make_stack(argv, &stack_a);
+	if (!split_arguments(argv, &stack_a))
+		error_exit(stack_a, stack_b);
+	if (!make_stack(&stack_a))
+		error_exit(stack_a, stack_b);
+	print_node = stack_a->head;
+	while (print_node)
+	{
+		printf("%d\n", print_node->n);
+		print_node = print_node->next;
+	}
 	return (EXIT_SUCCESS);
 }
