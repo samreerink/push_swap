@@ -6,7 +6,7 @@
 /*   By: sreerink <sreerink@student.codam.nl>        +#+                      */
 /*                                                  +#+                       */
 /*   Created: 2024/01/12 14:34:24 by sreerink      #+#    #+#                 */
-/*   Updated: 2024/01/23 00:48:35 by sreerink      ########   odam.nl         */
+/*   Updated: 2024/01/24 18:13:29 by sreerink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	error_exit(t_stack *stack_a, t_stack *stack_b)
 {
 	// free stacks
-	write(STDERR_FILENO, "error\n", 6);
+	write(STDERR_FILENO, "Error\n", 6);
 	exit(EXIT_FAILURE);
 }
 
@@ -139,6 +139,9 @@ int	main(int argc, char *argv[])
 		error_exit(stack_a, stack_b);
 	if (!make_stack(&stack_a))
 		error_exit(stack_a, stack_b);
+	//swap_first_two(&(stack_a->head));
+	//rotate(&(stack_a->head), &(stack_a->last));
+	reverse_rotate(&(stack_a->head), &(stack_a->last));
 	print_node = stack_a->head;
 	while (print_node)
 	{

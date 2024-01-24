@@ -6,7 +6,7 @@
 #    By: sreerink <sreerink@student.codam.nl>        +#+                       #
 #                                                   +#+                        #
 #    Created: 2024/01/12 14:43:57 by sreerink      #+#    #+#                  #
-#    Updated: 2024/01/12 14:44:33 by sreerink      ########   odam.nl          #
+#    Updated: 2024/01/24 16:38:49 by sreerink      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ RM= 		rm -rf
 
 FLAGS= 		-Wall -Werror -Wextra
 
-SRCS= 		main.c
+SRCS= 		main.c operations.c
 
 OBJ= 	$(SRCS:.c=.o)
 
