@@ -6,7 +6,7 @@
 /*   By: sreerink <sreerink@student.codam.nl>        +#+                      */
 /*                                                  +#+                       */
 /*   Created: 2024/01/12 14:34:14 by sreerink      #+#    #+#                 */
-/*   Updated: 2024/01/24 18:11:11 by sreerink      ########   odam.nl         */
+/*   Updated: 2024/01/25 15:43:31 by sreerink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ typedef struct s_stack
 }	t_stack;
 
 void	swap_first_two(t_node **head);
+
+void	push(t_node **head_one, t_node **head_two);
 
 void	rotate(t_node **head, t_node **last);
 

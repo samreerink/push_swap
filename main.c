@@ -6,7 +6,7 @@
 /*   By: sreerink <sreerink@student.codam.nl>        +#+                      */
 /*                                                  +#+                       */
 /*   Created: 2024/01/12 14:34:24 by sreerink      #+#    #+#                 */
-/*   Updated: 2024/01/24 18:13:29 by sreerink      ########   odam.nl         */
+/*   Updated: 2024/01/26 20:02:24 by sreerink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,7 @@ int	main(int argc, char *argv[])
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 	t_node	*print_node; // Only for testing purpose
+	char	c;
 
 	if (argc <= 1)
 		error_exit(NULL, NULL);
@@ -141,11 +142,21 @@ int	main(int argc, char *argv[])
 		error_exit(stack_a, stack_b);
 	//swap_first_two(&(stack_a->head));
 	//rotate(&(stack_a->head), &(stack_a->last));
+	push(&(stack_a->head), &(stack_b->head));
+	push(&(stack_a->head), &(stack_b->head));
 	reverse_rotate(&(stack_a->head), &(stack_a->last));
 	print_node = stack_a->head;
+	c = 'a';
 	while (print_node)
 	{
-		printf("%d\n", print_node->n);
+		printf("%c: %d\n", c, print_node->n);
+		print_node = print_node->next;
+	}
+	print_node = stack_b->head;
+	c = 'b';
+	while (print_node)
+	{
+		printf("%c: %d\n", c, print_node->n);
 		print_node = print_node->next;
 	}
 	return (EXIT_SUCCESS);

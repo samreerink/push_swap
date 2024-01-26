@@ -6,7 +6,7 @@
 /*   By: sreerink <sreerink@student.codam.nl>        +#+                      */
 /*                                                  +#+                       */
 /*   Created: 2024/01/24 16:37:55 by sreerink      #+#    #+#                 */
-/*   Updated: 2024/01/24 18:10:30 by sreerink      ########   odam.nl         */
+/*   Updated: 2024/01/25 19:08:35 by sreerink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,19 @@ void	swap_first_two(t_node **head)
 	(*head)->next = second->next;
 	second->next = *head;
 	*head = second;
-	write(1, "sa\n", 3);
+}
+
+void	push(t_node **head_one, t_node **head_two)
+{
+	t_node	*temp;
+
+	temp = (*head_one)->next;
+	if (!head_two)
+		(*head_one)->next = NULL;
+	else
+		(*head_one)->next = *head_two;
+	*head_two = *head_one;
+	*head_one = temp;
 }
 
 void	rotate(t_node **head, t_node **last)
@@ -32,7 +44,6 @@ void	rotate(t_node **head, t_node **last)
 	*last = *head;
 	(*last)->next = NULL;
 	*head = temp;
-	write(1, "ra\n", 3);
 }
 
 void	reverse_rotate(t_node **head, t_node **last)
@@ -46,5 +57,4 @@ void	reverse_rotate(t_node **head, t_node **last)
 	*head = *last;
 	*last = temp;
 	(*last)->next = NULL;
-	write(1, "rra\n", 4);
 }
