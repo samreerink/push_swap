@@ -6,7 +6,7 @@
 /*   By: sreerink <sreerink@student.codam.nl>        +#+                      */
 /*                                                  +#+                       */
 /*   Created: 2024/01/24 16:37:55 by sreerink      #+#    #+#                 */
-/*   Updated: 2024/01/25 19:08:35 by sreerink      ########   odam.nl         */
+/*   Updated: 2024/01/28 16:59:31 by sreerink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,26 @@
 
 void	swap_first_two(t_node **head)
 {
-	t_node	*second;
+	t_node	*temp;
 
-	second = (*head)->next;
-	(*head)->next = second->next;
-	second->next = *head;
-	*head = second;
+	if (!*head || !(*head)->next)
+		return ;
+	temp = (*head)->next;
+	(*head)->next = temp->next;
+	temp->next = *head;
+	*head = temp;
 }
 
 void	push(t_node **head_one, t_node **head_two)
 {
 	t_node	*temp;
 
-	temp = (*head_one)->next;
-	if (!head_two)
-		(*head_one)->next = NULL;
-	else
-		(*head_one)->next = *head_two;
-	*head_two = *head_one;
-	*head_one = temp;
+	if (!*head_one)
+		return ;
+	temp = *head_one;
+	*head_one = (*head_one)->next;
+	temp->next = *head_two;
+	*head_two = temp;
 }
 
 void	rotate(t_node **head, t_node **last)

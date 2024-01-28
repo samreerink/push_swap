@@ -6,7 +6,7 @@
 /*   By: sreerink <sreerink@student.codam.nl>        +#+                      */
 /*                                                  +#+                       */
 /*   Created: 2024/01/12 14:34:24 by sreerink      #+#    #+#                 */
-/*   Updated: 2024/01/26 20:02:24 by sreerink      ########   odam.nl         */
+/*   Updated: 2024/01/28 21:06:19 by sreerink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,51 @@ bool	check_digits(char *argv[])
 	return (true);
 }
 
-bool	split_arguments(char *argv[], t_stack **stack)
+bool	check_duplicate(t_stack **stack)
+{
+	t_node	*current;
+	t_node	*to_check;
+
+	current = (*stack)->head;
+	while (current)
+	{
+		to_check = (*stack)->head;
+		while (to_check)
+		{
+			if ((current->index == to_check->index) && (current != to_check))
+				return (false);
+			to_check = to_check->next;
+		}
+		current = current->next;
+	}
+	return (true);
+}
+
+bool	index_stack(t_stack **stack)
+{
+	t_node	*current;
+	t_node	*to_check;
+	size_t	index;
+
+	index = 0;
+	current = (*stack)->head;
+	while (current)
+	{
+		to_check = (*stack)->head;
+		while (to_check)
+		{
+			if (current->n > to_check->n)
+				index++;
+			to_check = to_check->next;
+		}
+		current->index = index;
+		current = current->next;
+		index = 0;
+	}
+	return (check_duplicate(stack));
+}
+
+bool	split_arguments(int argc, char *argv[], t_stack **stack)
 {
 	size_t	i;
 	size_t	j;
@@ -68,6 +112,9 @@ bool	split_arguments(char *argv[], t_stack **stack)
 	i = 1;
 	j = 0;
 	if (!check_digits(argv))
+		return (false);
+	(*stack)->split_args = malloc(argc * sizeof(char **));
+	if (!(*stack)->split_args)
 		return (false);
 	while (argv[i])
 	{
@@ -117,8 +164,7 @@ void	init_stack(t_stack **new_stack)
 		return;
 	(*new_stack)->head = NULL;
 	(*new_stack)->last = NULL;
-	(*new_stack)->split_args = malloc(sizeof(char ***));
-	// implement malloc check
+	(*new_stack)->split_args = NULL;
 }
 
 int	main(int argc, char *argv[])
@@ -136,22 +182,24 @@ int	main(int argc, char *argv[])
 	init_stack(&stack_b);
 	if (!stack_b)
 		error_exit(stack_a, NULL);
-	if (!split_arguments(argv, &stack_a))
+	if (!split_arguments(argc, argv, &stack_a))
 		error_exit(stack_a, stack_b);
 	if (!make_stack(&stack_a))
 		error_exit(stack_a, stack_b);
+	if (!index_stack(&stack_a))
+		error_exit(stack_a, stack_b);
 	//swap_first_two(&(stack_a->head));
 	//rotate(&(stack_a->head), &(stack_a->last));
-	push(&(stack_a->head), &(stack_b->head));
-	push(&(stack_a->head), &(stack_b->head));
-	reverse_rotate(&(stack_a->head), &(stack_a->last));
+	//reverse_rotate(&(stack_a->head), &(stack_a->last));
+	//push(&(stack_a->head), &(stack_b->head));
 	print_node = stack_a->head;
 	c = 'a';
 	while (print_node)
 	{
-		printf("%c: %d\n", c, print_node->n);
+		printf("%c: %d [%ld]\n", c, print_node->n, print_node->index);
 		print_node = print_node->next;
 	}
+	printf("\n");
 	print_node = stack_b->head;
 	c = 'b';
 	while (print_node)
