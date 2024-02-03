@@ -6,7 +6,7 @@
 /*   By: sreerink <sreerink@student.codam.nl>        +#+                      */
 /*                                                  +#+                       */
 /*   Created: 2024/01/12 14:34:24 by sreerink      #+#    #+#                 */
-/*   Updated: 2024/01/28 21:06:19 by sreerink      ########   odam.nl         */
+/*   Updated: 2024/02/03 21:09:45 by sreerink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,43 @@ void	error_exit(t_stack *stack_a, t_stack *stack_b)
 	exit(EXIT_FAILURE);
 }
 
-t_node	*make_node(char *number, t_node *last)
+bool	atoi_overflow(const char *str, int *nb)
+{
+	int	i;
+	int	multi;
+
+	i = 0;
+	*nb = 0;
+	multi = 1;
+	if (str[i] == '-')
+	{
+		multi = -1;
+		i++;
+	}
+	while (str[i])
+	{
+		*nb += str[i] - '0';
+		if (*nb < 0 && (multi == 1 || *nb != INT_MIN))
+			return (false);
+		if (str[i + 1])
+			*nb *= 10;
+		i++;
+	}
+	*nb *= multi;
+	return (true);
+}
+
+t_node	*make_node(char *str_nb, t_node *last)
 {
 	t_node	*new_node;
 
-	if (!number)
+	if (!str_nb)
 		return (NULL);
 	new_node = malloc(sizeof(t_node));
 	if (!new_node)
 		return (NULL);
-	new_node->n = ft_atoi(number);
+	if (!atoi_overflow(str_nb, &new_node->n))
+		return (NULL);
 	new_node->next = NULL;
 	if (last != NULL)
 		last->next = new_node;
@@ -49,7 +76,9 @@ bool	check_digits(char *argv[])
 		{
 			c = argv[i][j];
 			//printf("%c (check_digits)\n", argv[i][j]);
-			if ((c < 48 || c > 57) && c != 32)
+			if ((c < 48 || c > 57) && (c != 32 && c != 45))
+				return (false);
+			if (c == 45 && argv[i][j + 1] == 45)
 				return (false);
 			j++;
 		}
@@ -79,11 +108,28 @@ bool	check_duplicate(t_stack **stack)
 	return (true);
 }
 
+bool	check_sorted(t_stack **stack)
+{
+	t_node		*current;
+	unsigned int	i;
+
+	i = 0;
+	current = (*stack)->head;
+	while (current->index == i)
+	{
+		if (!current->next)
+			return (true);
+		current = current->next;
+		i++;
+	}
+	return (false);
+}
+
 bool	index_stack(t_stack **stack)
 {
-	t_node	*current;
-	t_node	*to_check;
-	size_t	index;
+	t_node		*current;
+	t_node		*to_check;
+	unsigned int	index;
 
 	index = 0;
 	current = (*stack)->head;
@@ -157,6 +203,13 @@ bool	make_stack(t_stack **stack)
 	return (true);
 }
 
+bool	sort_stack(t_stack **a, t_stack **b)
+{
+	if (check_sorted(a))
+		printf("List is already sorted\n");
+	return (true);
+}
+
 void	init_stack(t_stack **new_stack)
 {
 	*new_stack = malloc(sizeof(t_stack));
@@ -188,6 +241,7 @@ int	main(int argc, char *argv[])
 		error_exit(stack_a, stack_b);
 	if (!index_stack(&stack_a))
 		error_exit(stack_a, stack_b);
+	sort_stack(&stack_a, &stack_b);
 	//swap_first_two(&(stack_a->head));
 	//rotate(&(stack_a->head), &(stack_a->last));
 	//reverse_rotate(&(stack_a->head), &(stack_a->last));
@@ -196,7 +250,7 @@ int	main(int argc, char *argv[])
 	c = 'a';
 	while (print_node)
 	{
-		printf("%c: %d [%ld]\n", c, print_node->n, print_node->index);
+		printf("%c: %d [%u]\n", c, print_node->n, print_node->index);
 		print_node = print_node->next;
 	}
 	printf("\n");

@@ -1,0 +1,19 @@
+- Implement sorting;
+                     - 2 nodes
+		     - 3 nodes
+		     - 4 nodes
+		     - 5 nodes
+		     - Radix
+
+- Freeing allocated memory
+
+
+Radix:
+       Stack A:
+      - Bit is 1, rotate naar laatste plek
+      - Bit is 0, push naar stack B
+
+      Stack B:
+      - Push terug naar stack A
+
+ - Volgende bit checken, herhaal bovenstaande

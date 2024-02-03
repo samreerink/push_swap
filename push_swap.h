@@ -6,7 +6,7 @@
 /*   By: sreerink <sreerink@student.codam.nl>        +#+                      */
 /*                                                  +#+                       */
 /*   Created: 2024/01/12 14:34:14 by sreerink      #+#    #+#                 */
-/*   Updated: 2024/01/28 20:37:53 by sreerink      ########   odam.nl         */
+/*   Updated: 2024/02/01 15:25:43 by sreerink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,13 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <stdbool.h>
+# include <limits.h>
 # include <unistd.h>
 
 typedef struct s_node
 {
 	int		n;
-	size_t		index;
+	unsigned int	index;
 	struct s_node	*next;
 }	t_node;
 
