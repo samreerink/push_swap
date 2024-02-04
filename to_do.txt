@@ -3,17 +3,7 @@
 		     - 3 nodes
 		     - 4 nodes
 		     - 5 nodes
-		     - Radix
+
+- Adjust how radix_sort is structured, needs to print out the move operations (ra, pb, pa)
 
 - Freeing allocated memory
-
-
-Radix:
-       Stack A:
-      - Bit is 1, rotate naar laatste plek
-      - Bit is 0, push naar stack B
-
-      Stack B:
-      - Push terug naar stack A
-
- - Volgende bit checken, herhaal bovenstaande

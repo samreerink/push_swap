@@ -6,7 +6,7 @@
 /*   By: sreerink <sreerink@student.codam.nl>        +#+                      */
 /*                                                  +#+                       */
 /*   Created: 2024/01/12 14:34:24 by sreerink      #+#    #+#                 */
-/*   Updated: 2024/02/03 21:09:45 by sreerink      ########   odam.nl         */
+/*   Updated: 2024/02/04 21:04:04 by sreerink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -203,10 +203,66 @@ bool	make_stack(t_stack **stack)
 	return (true);
 }
 
+size_t	stack_length(t_stack **stack)
+{
+	t_node	*current;
+	size_t	length;
+
+	length = 0;
+	current = (*stack)->head;
+	while (current)
+	{
+		length++;
+		current = current->next;
+	}
+	return (length);
+}
+
+size_t	binary_length(size_t nb)
+{
+	size_t	length;
+
+	length = 0;
+	while (nb > 0)
+	{
+		nb >>= 1;
+		length++;
+	}
+	return (length);
+}
+
+void	radix_sort(t_stack **a, t_stack **b)
+{
+	size_t	i;
+	size_t	j;
+	size_t	len;
+	size_t	max_bits;
+
+	i = 0;
+	len = stack_length(a);
+	max_bits = binary_length(len - 1);
+	while (i < max_bits)
+	{
+		j = 0;
+		while (j < len)
+		{
+			if (((*a)->head->index >> i) & 1)
+				rotate(&(*a)->head, &(*a)->last);
+			else
+				push(&(*a)->head, &(*b)->head);
+			j++;
+		}
+		while ((*b)->head)
+			push(&(*b)->head, &(*a)->head);
+		i++;
+	}
+}
+
 bool	sort_stack(t_stack **a, t_stack **b)
 {
 	if (check_sorted(a))
-		printf("List is already sorted\n");
+		printf("List is already sorted\n"); // Change this to expected output as in subject
+	radix_sort(a, b);
 	return (true);
 }
 
@@ -242,15 +298,11 @@ int	main(int argc, char *argv[])
 	if (!index_stack(&stack_a))
 		error_exit(stack_a, stack_b);
 	sort_stack(&stack_a, &stack_b);
-	//swap_first_two(&(stack_a->head));
-	//rotate(&(stack_a->head), &(stack_a->last));
-	//reverse_rotate(&(stack_a->head), &(stack_a->last));
-	//push(&(stack_a->head), &(stack_b->head));
-	print_node = stack_a->head;
+	/*print_node = stack_a->head;
 	c = 'a';
 	while (print_node)
 	{
-		printf("%c: %d [%u]\n", c, print_node->n, print_node->index);
+		printf("%c: %d [%zu]\n", c, print_node->n, print_node->index);
 		print_node = print_node->next;
 	}
 	printf("\n");
@@ -261,5 +313,5 @@ int	main(int argc, char *argv[])
 		printf("%c: %d\n", c, print_node->n);
 		print_node = print_node->next;
 	}
-	return (EXIT_SUCCESS);
+	return (EXIT_SUCCESS); */
 }
