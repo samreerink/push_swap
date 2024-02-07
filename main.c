@@ -6,7 +6,7 @@
 /*   By: sreerink <sreerink@student.codam.nl>        +#+                      */
 /*                                                  +#+                       */
 /*   Created: 2024/01/12 14:34:24 by sreerink      #+#    #+#                 */
-/*   Updated: 2024/02/04 21:04:04 by sreerink      ########   odam.nl         */
+/*   Updated: 2024/02/07 20:14:00 by sreerink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,8 +110,8 @@ bool	check_duplicate(t_stack **stack)
 
 bool	check_sorted(t_stack **stack)
 {
-	t_node		*current;
-	unsigned int	i;
+	t_node	*current;
+	size_t	i;
 
 	i = 0;
 	current = (*stack)->head;
@@ -127,9 +127,9 @@ bool	check_sorted(t_stack **stack)
 
 bool	index_stack(t_stack **stack)
 {
-	t_node		*current;
-	t_node		*to_check;
-	unsigned int	index;
+	t_node	*current;
+	t_node	*to_check;
+	size_t	index;
 
 	index = 0;
 	current = (*stack)->head;
@@ -218,52 +218,30 @@ size_t	stack_length(t_stack **stack)
 	return (length);
 }
 
-size_t	binary_length(size_t nb)
+void	small_sort(t_stack **a, t_stack **b, size_t len)
 {
-	size_t	length;
-
-	length = 0;
-	while (nb > 0)
-	{
-		nb >>= 1;
-		length++;
-	}
-	return (length);
+	if (len == 2)
+		move_sa(a, true);
+	if (len == 3)
+		sort_three(a);
 }
 
-void	radix_sort(t_stack **a, t_stack **b)
+void	sort_stack(t_stack **a, t_stack **b)
 {
-	size_t	i;
-	size_t	j;
 	size_t	len;
-	size_t	max_bits;
 
-	i = 0;
 	len = stack_length(a);
-	max_bits = binary_length(len - 1);
-	while (i < max_bits)
-	{
-		j = 0;
-		while (j < len)
-		{
-			if (((*a)->head->index >> i) & 1)
-				rotate(&(*a)->head, &(*a)->last);
-			else
-				push(&(*a)->head, &(*b)->head);
-			j++;
-		}
-		while ((*b)->head)
-			push(&(*b)->head, &(*a)->head);
-		i++;
-	}
-}
-
-bool	sort_stack(t_stack **a, t_stack **b)
-{
 	if (check_sorted(a))
-		printf("List is already sorted\n"); // Change this to expected output as in subject
-	radix_sort(a, b);
-	return (true);
+	{
+		write(STDOUT_FILENO, "\n", 1);
+		return ;
+	}
+	if (len <= 5)
+	{
+		small_sort(a, b, len);
+		return ;
+	}
+	radix_sort(a, b, len);
 }
 
 void	init_stack(t_stack **new_stack)
@@ -298,7 +276,7 @@ int	main(int argc, char *argv[])
 	if (!index_stack(&stack_a))
 		error_exit(stack_a, stack_b);
 	sort_stack(&stack_a, &stack_b);
-	/*print_node = stack_a->head;
+/*	print_node = stack_a->head;
 	c = 'a';
 	while (print_node)
 	{
@@ -312,6 +290,6 @@ int	main(int argc, char *argv[])
 	{
 		printf("%c: %d\n", c, print_node->n);
 		print_node = print_node->next;
-	}
-	return (EXIT_SUCCESS); */
+	}*/
+	return (EXIT_SUCCESS);
 }

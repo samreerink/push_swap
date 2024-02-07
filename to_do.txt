@@ -1,9 +1,13 @@
 - Implement sorting;
-                     - 2 nodes
 		     - 3 nodes
 		     - 4 nodes
 		     - 5 nodes
 
-- Adjust how radix_sort is structured, needs to print out the move operations (ra, pb, pa)
-
 - Freeing allocated memory
+
+three sort;
+            021
+	    102
+	    201
+	    120
+	    210

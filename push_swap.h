@@ -6,7 +6,7 @@
 /*   By: sreerink <sreerink@student.codam.nl>        +#+                      */
 /*                                                  +#+                       */
 /*   Created: 2024/01/12 14:34:14 by sreerink      #+#    #+#                 */
-/*   Updated: 2024/02/04 17:53:43 by sreerink      ########   odam.nl         */
+/*   Updated: 2024/02/07 18:38:34 by sreerink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,30 @@ typedef struct s_stack
 	t_node	*last;
 	char	***split_args;
 }	t_stack;
+
+void	radix_sort(t_stack **a, t_stack **b, size_t len);
+
+void	move_sa(t_stack **a);
+
+void	move_sb(t_stack **b);
+
+void	move_ss(t_stack **a, t_stack **b);
+
+void	move_pa(t_stack **b, t_stack **a, bool print);
+
+void	move_pb(t_stack **a, t_stack **b, bool print);
+
+void	move_ra(t_stack **a, bool print);
+
+void	move_rb(t_stack **b);
+
+void	move_rr(t_stack **a, t_stack **b);
+
+void	move_rra(t_stack **a);
+
+void	move_rrb(t_stack **b);
+
+void	move_rrr(t_stack **a, t_stack **b);
 
 void	swap_first_two(t_node **head);
 
