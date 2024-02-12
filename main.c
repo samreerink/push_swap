@@ -6,7 +6,7 @@
 /*   By: sreerink <sreerink@student.codam.nl>        +#+                      */
 /*                                                  +#+                       */
 /*   Created: 2024/01/12 14:34:24 by sreerink      #+#    #+#                 */
-/*   Updated: 2024/02/07 20:14:00 by sreerink      ########   odam.nl         */
+/*   Updated: 2024/02/12 20:20:44 by sreerink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -224,6 +224,8 @@ void	small_sort(t_stack **a, t_stack **b, size_t len)
 		move_sa(a, true);
 	if (len == 3)
 		sort_three(a);
+	if (len == 4)
+		sort_four(a, b);
 }
 
 void	sort_stack(t_stack **a, t_stack **b)

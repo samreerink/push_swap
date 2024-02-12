@@ -6,16 +6,17 @@
 /*   By: sreerink <sreerink@student.codam.nl>        +#+                      */
 /*                                                  +#+                       */
 /*   Created: 2024/02/06 16:47:44 by sreerink      #+#    #+#                 */
-/*   Updated: 2024/02/07 18:12:31 by sreerink      ########   odam.nl         */
+/*   Updated: 2024/02/12 18:42:19 by sreerink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	move_rra(t_stack **a)
+void	move_rra(t_stack **a, bool print)
 {
 	reverse_rotate(&(*a)->head, &(*a)->last);
-	write(STDOUT_FILENO, "rra\n", 4);
+	if (print)
+		write(STDOUT_FILENO, "rra\n", 4);
 }
 
 void	move_rrb(t_stack **b)

@@ -1,13 +1,12 @@
 - Implement sorting;
-		     - 3 nodes
 		     - 4 nodes
 		     - 5 nodes
 
 - Freeing allocated memory
 
 three sort;
-            021
-	    102
-	    201
-	    120
-	    210
+            021 102 012
+	    102 012
+	    201 012
+	    120 012
+	    210 102 012

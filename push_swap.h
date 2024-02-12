@@ -6,7 +6,7 @@
 /*   By: sreerink <sreerink@student.codam.nl>        +#+                      */
 /*                                                  +#+                       */
 /*   Created: 2024/01/12 14:34:14 by sreerink      #+#    #+#                 */
-/*   Updated: 2024/02/07 18:38:34 by sreerink      ########   odam.nl         */
+/*   Updated: 2024/02/12 20:19:13 by sreerink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,11 @@ typedef struct s_stack
 
 void	radix_sort(t_stack **a, t_stack **b, size_t len);
 
-void	move_sa(t_stack **a);
+void	sort_three(t_stack **a);
+
+void	sort_four(t_stack **a, t_stack **b);
+
+void	move_sa(t_stack **a, bool print);
 
 void	move_sb(t_stack **b);
 
@@ -52,7 +56,7 @@ void	move_rb(t_stack **b);
 
 void	move_rr(t_stack **a, t_stack **b);
 
-void	move_rra(t_stack **a);
+void	move_rra(t_stack **a, bool print);
 
 void	move_rrb(t_stack **b);
 

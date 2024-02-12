@@ -6,7 +6,7 @@
 #    By: sreerink <sreerink@student.codam.nl>        +#+                       #
 #                                                   +#+                        #
 #    Created: 2024/01/12 14:43:57 by sreerink      #+#    #+#                  #
-#    Updated: 2024/02/06 17:10:49 by sreerink      ########   odam.nl          #
+#    Updated: 2024/02/12 19:12:30 by sreerink      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ RM= 		rm -rf
 FLAGS= 		-Wall -Werror -Wextra
 
 SRCS= 		main.c operations.c push_moves.c swap_moves.c \
-		rotate_moves.c rev_rotate_moves.c radix_sort.c
+		rotate_moves.c rev_rotate_moves.c radix_sort.c \
+		small_sort.c
 
 OBJ= 	$(SRCS:.c=.o)
 
