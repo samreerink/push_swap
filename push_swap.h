@@ -6,7 +6,7 @@
 /*   By: sreerink <sreerink@student.codam.nl>        +#+                      */
 /*                                                  +#+                       */
 /*   Created: 2024/01/12 14:34:14 by sreerink      #+#    #+#                 */
-/*   Updated: 2024/02/13 18:01:31 by sreerink      ########   odam.nl         */
+/*   Updated: 2024/02/13 19:52:11 by sreerink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	radix_sort(t_stack **a, t_stack **b, size_t len);
 
 size_t	get_index_count(t_stack **stack, size_t index);
 
-void	smallest_to_top(t_stack **stack, size_t count);
+void	smallest_to_top(t_stack **stack, size_t count, size_t len);
 
 void	update_index(t_stack **stack);
 

@@ -6,7 +6,7 @@
 /*   By: sreerink <sreerink@student.codam.nl>        +#+                      */
 /*                                                  +#+                       */
 /*   Created: 2024/02/13 17:02:44 by sreerink      #+#    #+#                 */
-/*   Updated: 2024/02/13 18:18:56 by sreerink      ########   odam.nl         */
+/*   Updated: 2024/02/13 19:50:17 by sreerink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,16 +39,17 @@ void	update_index(t_stack **stack)
 	}
 }
 
-void	smallest_to_top(t_stack **stack, size_t count)
+void	smallest_to_top(t_stack **stack, size_t count, size_t len)
 {
 	while (count > 0 && count < 3)
 	{
 		move_ra(stack, true);
 		count--;
 	}
-	while (count == 3 || count == 4)
+	if (count >= 3)
 	{
 		move_rra(stack, true);
-		count++;
+		if (count == 3 && len == 5)
+			move_rra(stack, true);
 	}
 }

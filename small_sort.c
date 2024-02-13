@@ -6,7 +6,7 @@
 /*   By: sreerink <sreerink@student.codam.nl>        +#+                      */
 /*                                                  +#+                       */
 /*   Created: 2024/02/07 19:48:51 by sreerink      #+#    #+#                 */
-/*   Updated: 2024/02/13 18:00:59 by sreerink      ########   odam.nl         */
+/*   Updated: 2024/02/13 19:51:53 by sreerink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	sort_four(t_stack **a, t_stack **b)
 	size_t	count;
 
 	count = get_index_count(a, 0);
-	smallest_to_top(a, count);
+	smallest_to_top(a, count, 4);
 	move_pb(a, b, true);
 	update_index(a);
 	sort_three(a);
@@ -54,8 +54,9 @@ void	sort_five(t_stack **a, t_stack **b)
 	size_t	count;
 
 	count = get_index_count(a, 0);
-	smallest_to_top(a, count);
+	smallest_to_top(a, count, 5);
 	move_pb(a, b, true);
 	update_index(a);
 	sort_four(a, b);
+	move_pa(b, a, true);
 }
