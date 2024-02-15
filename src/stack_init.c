@@ -6,7 +6,7 @@
 /*   By: sreerink <sreerink@student.codam.nl>        +#+                      */
 /*                                                  +#+                       */
 /*   Created: 2024/02/15 15:26:33 by sreerink      #+#    #+#                 */
-/*   Updated: 2024/02/15 15:27:58 by sreerink      ########   odam.nl         */
+/*   Updated: 2024/02/15 16:14:30 by sreerink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	init_stack(t_stack **new_stack)
 {
 	*new_stack = malloc(sizeof(t_stack));
 	if (!*new_stack)
-		return;
+		return ;
 	(*new_stack)->head = NULL;
 	(*new_stack)->last = NULL;
 	(*new_stack)->split_args = NULL;

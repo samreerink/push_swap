@@ -6,7 +6,7 @@
 /*   By: sreerink <sreerink@student.codam.nl>        +#+                      */
 /*                                                  +#+                       */
 /*   Created: 2024/01/12 14:34:14 by sreerink      #+#    #+#                 */
-/*   Updated: 2024/02/15 16:07:16 by sreerink      ########   odam.nl         */
+/*   Updated: 2024/02/15 21:21:54 by sreerink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 typedef struct s_node
 {
 	int		n;
-	size_t		index;
+	size_t	index;
 	struct s_node	*next;
 }	t_node;
 
@@ -34,9 +34,9 @@ typedef struct s_stack
 	char	***split_args;
 }	t_stack;
 
-void	error_exit(t_stack *stack_a, t_stack *stack_b);
-
 void	init_stack(t_stack **new_stack);
+
+void	free_stack(t_stack **stack);
 
 bool	atoi_overflow(const char *str, int *nb);
 

@@ -6,7 +6,7 @@
 /*   By: sreerink <sreerink@student.codam.nl>        +#+                      */
 /*                                                  +#+                       */
 /*   Created: 2024/02/15 15:43:06 by sreerink      #+#    #+#                 */
-/*   Updated: 2024/02/15 15:47:28 by sreerink      ########   odam.nl         */
+/*   Updated: 2024/02/15 16:13:15 by sreerink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ bool	check_digits(char *argv[])
 {
 	size_t	i;
 	size_t	j;
-	int	c;
+	int		c;
 
 	i = 1;
 	j = 0;
