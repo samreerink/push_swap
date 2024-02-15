@@ -6,7 +6,7 @@
 /*   By: sreerink <sreerink@student.codam.nl>        +#+                      */
 /*                                                  +#+                       */
 /*   Created: 2024/01/12 14:34:14 by sreerink      #+#    #+#                 */
-/*   Updated: 2024/02/15 02:43:09 by sreerink      ########   odam.nl         */
+/*   Updated: 2024/02/15 16:07:16 by sreerink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,28 @@ typedef struct s_stack
 	t_node	*last;
 	char	***split_args;
 }	t_stack;
+
+void	error_exit(t_stack *stack_a, t_stack *stack_b);
+
+void	init_stack(t_stack **new_stack);
+
+bool	atoi_overflow(const char *str, int *nb);
+
+bool	check_sorted(t_stack **stack);
+
+bool	check_duplicate(t_stack **stack);
+
+bool	check_digits(char *argv[]);
+
+bool	split_arguments(int argc, char *argv[], t_stack **stack);
+
+bool	make_stack(t_stack **stack);
+
+size_t	stack_length(t_stack **stack);
+
+bool	index_stack(t_stack **stack);
+
+void	sort_stack(t_stack **a, t_stack **b);
 
 void	radix_sort(t_stack **a, t_stack **b, size_t len);
 

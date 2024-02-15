@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                       ::::::::             */
-/*   swap_moves.c                                      :+:    :+:             */
+/*   rev_rotate_moves.c                                :+:    :+:             */
 /*                                                    +:+                     */
 /*   By: sreerink <sreerink@student.codam.nl>        +#+                      */
 /*                                                  +#+                       */
-/*   Created: 2024/02/06 15:06:51 by sreerink      #+#    #+#                 */
-/*   Updated: 2024/02/07 19:46:48 by sreerink      ########   odam.nl         */
+/*   Created: 2024/02/06 16:47:44 by sreerink      #+#    #+#                 */
+/*   Updated: 2024/02/15 15:48:34 by sreerink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	move_sa(t_stack **a, bool print)
+void	move_rra(t_stack **a, bool print)
 {
-	swap_first_two(&(*a)->head);
+	reverse_rotate(&(*a)->head, &(*a)->last);
 	if (print)
-		write(STDOUT_FILENO, "sa\n", 3);
+		write(STDOUT_FILENO, "rra\n", 4);
 }
 
-void	move_sb(t_stack **b)
+void	move_rrb(t_stack **b)
 {
-	swap_first_two(&(*b)->head);
-	write(STDOUT_FILENO, "sb\n", 3);
+	reverse_rotate(&(*b)->head, &(*b)->last);
 }
 
-void	move_ss(t_stack **a, t_stack **b)
+void	move_rrr(t_stack **a, t_stack **b)
 {
-	swap_first_two(&(*a)->head);
-	swap_first_two(&(*b)->head);
-	write(STDOUT_FILENO, "ss\n", 3);
+	reverse_rotate(&(*a)->head, &(*a)->last);
+	reverse_rotate(&(*b)->head, &(*b)->last);
 }

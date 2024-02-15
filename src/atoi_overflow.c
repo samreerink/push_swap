@@ -1,33 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                       ::::::::             */
-/*   rotate_moves.c                                    :+:    :+:             */
+/*   atoi_overflow.c                                   :+:    :+:             */
 /*                                                    +:+                     */
 /*   By: sreerink <sreerink@student.codam.nl>        +#+                      */
 /*                                                  +#+                       */
-/*   Created: 2024/02/06 16:37:51 by sreerink      #+#    #+#                 */
-/*   Updated: 2024/02/07 18:36:09 by sreerink      ########   odam.nl         */
+/*   Created: 2024/02/15 15:31:30 by sreerink      #+#    #+#                 */
+/*   Updated: 2024/02/15 15:31:32 by sreerink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	move_ra(t_stack **a, bool print)
+bool	atoi_overflow(const char *str, int *nb)
 {
-	rotate(&(*a)->head, &(*a)->last);
-	if (print)
-		write(STDOUT_FILENO, "ra\n", 3);
-}
+	int	i;
+	int	multi;
 
-void	move_rb(t_stack **b)
-{
-	rotate(&(*b)->head, &(*b)->last);
-	write(STDOUT_FILENO, "rb\n", 3);
-}
-
-void	move_rr(t_stack **a, t_stack **b)
-{
-	rotate(&(*a)->head, &(*a)->last);
-	rotate(&(*b)->head, &(*b)->last);
-	write(STDOUT_FILENO, "rr\n", 3);
+	i = 0;
+	*nb = 0;
+	multi = 1;
+	if (str[i] == '-')
+	{
+		multi = -1;
+		i++;
+	}
+	while (str[i])
+	{
+		*nb += str[i] - '0';
+		if (*nb < 0 && (multi == 1 || *nb != INT_MIN))
+			return (false);
+		if (str[i + 1])
+			*nb *= 10;
+		i++;
+	}
+	*nb *= multi;
+	return (true);
 }
