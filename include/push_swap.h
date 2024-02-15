@@ -6,14 +6,14 @@
 /*   By: sreerink <sreerink@student.codam.nl>        +#+                      */
 /*                                                  +#+                       */
 /*   Created: 2024/01/12 14:34:14 by sreerink      #+#    #+#                 */
-/*   Updated: 2024/02/13 19:52:11 by sreerink      ########   odam.nl         */
+/*   Updated: 2024/02/15 02:43:09 by sreerink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "Libft/libft.h"
+# include "../Libft/libft.h"
 # include <stdio.h>
 # include <stdlib.h>
 # include <stdbool.h>

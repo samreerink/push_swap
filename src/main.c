@@ -6,7 +6,7 @@
 /*   By: sreerink <sreerink@student.codam.nl>        +#+                      */
 /*                                                  +#+                       */
 /*   Created: 2024/01/12 14:34:24 by sreerink      #+#    #+#                 */
-/*   Updated: 2024/02/13 19:44:01 by sreerink      ########   odam.nl         */
+/*   Updated: 2024/02/15 02:27:45 by sreerink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -236,10 +236,7 @@ void	sort_stack(t_stack **a, t_stack **b)
 
 	len = stack_length(a);
 	if (check_sorted(a))
-	{
-		write(STDOUT_FILENO, "\n", 1);
 		return ;
-	}
 	if (len <= 5)
 	{
 		small_sort(a, b, len);
@@ -262,11 +259,9 @@ int	main(int argc, char *argv[])
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
-	t_node	*print_node; // Only for testing purpose
-	char	c;
 
 	if (argc <= 1)
-		error_exit(NULL, NULL);
+		return (EXIT_SUCCESS);
 	init_stack(&stack_a);
 	if (!stack_a)
 		error_exit(NULL, NULL);
@@ -280,20 +275,5 @@ int	main(int argc, char *argv[])
 	if (!index_stack(&stack_a))
 		error_exit(stack_a, stack_b);
 	sort_stack(&stack_a, &stack_b);
-/*	print_node = stack_a->head;
-	c = 'a';
-	while (print_node)
-	{
-		printf("%c: %d [%zu]\n", c, print_node->n, print_node->index);
-		print_node = print_node->next;
-	}
-	printf("\n");
-	print_node = stack_b->head;
-	c = 'b';
-	while (print_node)
-	{
-		printf("%c: %d\n", c, print_node->n);
-		print_node = print_node->next;
-	}*/
 	return (EXIT_SUCCESS);
 }
