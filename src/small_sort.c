@@ -6,7 +6,7 @@
 /*   By: sreerink <sreerink@student.codam.nl>        +#+                      */
 /*                                                  +#+                       */
 /*   Created: 2024/02/07 19:48:51 by sreerink      #+#    #+#                 */
-/*   Updated: 2024/02/15 15:06:43 by sreerink      ########   odam.nl         */
+/*   Updated: 2024/02/17 23:48:53 by sreerink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	sort_three(t_stack **a)
 	else if ((current->index == 2) && (second->index == 1))
 	{
 		move_ra(a, true);
-		move_ra(a, true);
+		move_sa(a, true);
 	}
 	else if ((current->index == 1) && (second->index == 0))
 		move_sa(a, true);
