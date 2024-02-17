@@ -6,11 +6,11 @@
 /*   By: sreerink <sreerink@student.codam.nl>        +#+                      */
 /*                                                  +#+                       */
 /*   Created: 2024/02/15 15:26:33 by sreerink      #+#    #+#                 */
-/*   Updated: 2024/02/17 21:04:58 by sreerink      ########   odam.nl         */
+/*   Updated: 2024/02/17 21:01:11 by sreerink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
 void	init_stack(t_stack **new_stack)
 {

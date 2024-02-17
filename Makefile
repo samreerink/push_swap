@@ -6,7 +6,7 @@
 #    By: sreerink <sreerink@student.codam.nl>        +#+                       #
 #                                                   +#+                        #
 #    Created: 2024/01/12 14:43:57 by sreerink      #+#    #+#                  #
-#    Updated: 2024/02/17 01:56:39 by sreerink      ########   odam.nl          #
+#    Updated: 2024/02/17 19:14:42 by sreerink      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,10 @@ SRCS= 		$(addprefix $(SRC_DIR)/, main.c operations.c moves_push.c \
 
 OBJ=		$(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRCS))
 
-BONUS_SRCS=	$(addprefix $(B_SRC_DIR)/, main.c checker.c)
+BONUS_SRCS=	$(addprefix $(B_SRC_DIR)/, main.c checker.c operations.c \
+		moves_push.c moves_swap.c moves_rotate.c moves_rev_rotate.c \
+		atoi_overflow.c checks.c parsing.c stack_init.c stack_utils.c \
+		stack_free.c)
 
 BONUS_OBJ=	$(patsubst $(B_SRC_DIR)/%.c, $(B_OBJ_DIR)/%.o, $(BONUS_SRCS))
 
@@ -41,7 +44,7 @@ LIBFT=		./Libft/libft.a
 
 HEADERS=	-I ./Libft -I ./include
 
-B_HEADERS=	-I ./Libft -I ./include -I ./bonus/include
+B_HEADERS=	-I ./Libft -I ./bonus/include
 
 all:		$(NAME)
 

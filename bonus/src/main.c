@@ -6,15 +6,23 @@
 /*   By: sreerink <sreerink@student.codam.nl>        +#+                      */
 /*                                                  +#+                       */
 /*   Created: 2024/02/16 23:10:53 by sreerink      #+#    #+#                 */
-/*   Updated: 2024/02/17 01:58:12 by sreerink      ########   odam.nl         */
+/*   Updated: 2024/02/17 19:37:42 by sreerink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
+void	error_exit(t_stack **stack_a, t_stack **stack_b)
+{
+	free_stack(stack_a);
+	free_stack(stack_b);
+	write(STDERR_FILENO, "Error\n", 6);
+	exit(EXIT_FAILURE);
+}
+
 int	main(int argc, char *argv[])
 {
-	t_stack *stack_a;
+	t_stack	*stack_a;
 	t_stack	*stack_b;
 
 	if (argc <= 1)

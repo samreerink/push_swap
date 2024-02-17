@@ -6,11 +6,11 @@
 /*   By: sreerink <sreerink@student.codam.nl>        +#+                      */
 /*                                                  +#+                       */
 /*   Created: 2024/01/24 16:37:55 by sreerink      #+#    #+#                 */
-/*   Updated: 2024/02/17 21:49:50 by sreerink      ########   odam.nl         */
+/*   Updated: 2024/02/17 21:47:39 by sreerink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
 void	swap_first_two(t_node **head)
 {
