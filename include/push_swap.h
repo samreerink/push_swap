@@ -6,7 +6,7 @@
 /*   By: sreerink <sreerink@student.codam.nl>        +#+                      */
 /*                                                  +#+                       */
 /*   Created: 2024/01/12 14:34:14 by sreerink      #+#    #+#                 */
-/*   Updated: 2024/02/15 21:21:54 by sreerink      ########   odam.nl         */
+/*   Updated: 2024/02/17 01:22:30 by sreerink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ typedef struct s_stack
 	t_node	*last;
 	char	***split_args;
 }	t_stack;
+
+void	error_exit(t_stack **stack_a, t_stack **stack_b);
 
 void	init_stack(t_stack **new_stack);
 
