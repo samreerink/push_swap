@@ -6,11 +6,11 @@
 /*   By: sreerink <sreerink@student.codam.nl>        +#+                      */
 /*                                                  +#+                       */
 /*   Created: 2024/02/13 17:02:44 by sreerink      #+#    #+#                 */
-/*   Updated: 2024/02/13 19:50:17 by sreerink      ########   odam.nl         */
+/*   Updated: 2024/02/19 23:11:32 by sreerink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 size_t	get_index_count(t_stack **stack, size_t index)
 {

@@ -6,11 +6,11 @@
 /*   By: sreerink <sreerink@student.codam.nl>        +#+                      */
 /*                                                  +#+                       */
 /*   Created: 2024/02/15 15:26:15 by sreerink      #+#    #+#                 */
-/*   Updated: 2024/02/17 19:24:13 by sreerink      ########   odam.nl         */
+/*   Updated: 2024/02/19 23:14:03 by sreerink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "../include/checker.h"
 
 bool	index_stack(t_stack **stack)
 {

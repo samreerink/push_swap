@@ -6,11 +6,11 @@
 /*   By: sreerink <sreerink@student.codam.nl>        +#+                      */
 /*                                                  +#+                       */
 /*   Created: 2024/02/15 15:43:06 by sreerink      #+#    #+#                 */
-/*   Updated: 2024/02/15 16:13:15 by sreerink      ########   odam.nl         */
+/*   Updated: 2024/02/19 23:11:31 by sreerink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 bool	check_sorted(t_stack **stack)
 {

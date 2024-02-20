@@ -6,11 +6,11 @@
 /*   By: sreerink <sreerink@student.codam.nl>        +#+                      */
 /*                                                  +#+                       */
 /*   Created: 2024/02/15 15:47:33 by sreerink      #+#    #+#                 */
-/*   Updated: 2024/02/17 19:24:14 by sreerink      ########   odam.nl         */
+/*   Updated: 2024/02/19 23:14:02 by sreerink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "../include/checker.h"
 
 bool	split_arguments(int argc, char *argv[], t_stack **stack)
 {

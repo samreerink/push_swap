@@ -6,11 +6,11 @@
 /*   By: sreerink <sreerink@student.codam.nl>        +#+                      */
 /*                                                  +#+                       */
 /*   Created: 2024/02/16 23:34:59 by sreerink      #+#    #+#                 */
-/*   Updated: 2024/02/17 21:13:07 by sreerink      ########   odam.nl         */
+/*   Updated: 2024/02/19 23:14:01 by sreerink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "../include/checker.h"
 
 bool	apply_move(t_stack **a, t_stack **b, char *move)
 {

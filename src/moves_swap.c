@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                       ::::::::             */
-/*   swap_moves.c                                      :+:    :+:             */
+/*   moves_swap.c                                      :+:    :+:             */
 /*                                                    +:+                     */
 /*   By: sreerink <sreerink@student.codam.nl>        +#+                      */
 /*                                                  +#+                       */
 /*   Created: 2024/02/06 15:06:51 by sreerink      #+#    #+#                 */
-/*   Updated: 2024/02/15 15:49:11 by sreerink      ########   odam.nl         */
+/*   Updated: 2024/02/19 23:11:32 by sreerink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 void	move_sa(t_stack **a, bool print)
 {

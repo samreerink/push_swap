@@ -6,11 +6,11 @@
 /*   By: sreerink <sreerink@student.codam.nl>        +#+                      */
 /*                                                  +#+                       */
 /*   Created: 2024/02/06 14:37:16 by sreerink      #+#    #+#                 */
-/*   Updated: 2024/02/07 18:37:31 by sreerink      ########   odam.nl         */
+/*   Updated: 2024/02/19 23:10:28 by sreerink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 size_t	binary_length(size_t nb)
 {

@@ -6,11 +6,11 @@
 /*   By: sreerink <sreerink@student.codam.nl>        +#+                      */
 /*                                                  +#+                       */
 /*   Created: 2024/02/16 23:10:53 by sreerink      #+#    #+#                 */
-/*   Updated: 2024/02/17 19:37:42 by sreerink      ########   odam.nl         */
+/*   Updated: 2024/02/19 23:14:01 by sreerink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "../include/checker.h"
 
 void	error_exit(t_stack **stack_a, t_stack **stack_b)
 {

@@ -6,11 +6,11 @@
 /*   By: sreerink <sreerink@student.codam.nl>        +#+                      */
 /*                                                  +#+                       */
 /*   Created: 2024/02/15 15:31:30 by sreerink      #+#    #+#                 */
-/*   Updated: 2024/02/17 19:24:13 by sreerink      ########   odam.nl         */
+/*   Updated: 2024/02/19 23:14:01 by sreerink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "../include/checker.h"
 
 bool	atoi_overflow(const char *str, int *nb)
 {

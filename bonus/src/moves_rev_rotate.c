@@ -6,11 +6,11 @@
 /*   By: sreerink <sreerink@student.codam.nl>        +#+                      */
 /*                                                  +#+                       */
 /*   Created: 2024/02/06 16:47:44 by sreerink      #+#    #+#                 */
-/*   Updated: 2024/02/17 19:24:13 by sreerink      ########   odam.nl         */
+/*   Updated: 2024/02/19 23:14:02 by sreerink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "../include/checker.h"
 
 void	move_rra(t_stack **a, bool print)
 {
