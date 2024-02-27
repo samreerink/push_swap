@@ -6,7 +6,7 @@
 /*   By: sreerink <sreerink@student.codam.nl>        +#+                      */
 /*                                                  +#+                       */
 /*   Created: 2024/01/12 14:34:14 by sreerink      #+#    #+#                 */
-/*   Updated: 2024/02/19 23:22:16 by sreerink      ########   odam.nl         */
+/*   Updated: 2024/02/27 17:44:20 by sreerink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 
 typedef struct s_node
 {
-	int		n;
-	size_t	index;
+	int				n;
+	size_t			index;
 	struct s_node	*next;
 }	t_node;
 

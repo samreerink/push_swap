@@ -22,8 +22,8 @@
 
 typedef struct s_node
 {
-	int		n;
-	size_t	index;
+	int				n;
+	size_t			index;
 	struct s_node	*next;
 }	t_node;
 

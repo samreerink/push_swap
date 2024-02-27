@@ -4,7 +4,15 @@
 import random
 
 n = 100
+i = 0;
+numbers = []
 
-for x in range(n - 1):
-    print(random.randint(-10000,10000), end=" ")
-print(random.randint(-10000,10000), end="")
+while i < n:
+    x = random.randint(-2147483648,2147483647)
+    if not x in numbers:
+        if i != (n - 1):
+            print(x, end=" ")
+        else:
+            print(x, end="")
+        i += 1
+        numbers.append(x)
