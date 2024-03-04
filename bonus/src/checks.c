@@ -6,7 +6,7 @@
 /*   By: sreerink <sreerink@student.codam.nl>        +#+                      */
 /*                                                  +#+                       */
 /*   Created: 2024/02/15 15:43:06 by sreerink      #+#    #+#                 */
-/*   Updated: 2024/02/19 23:14:01 by sreerink      ########   odam.nl         */
+/*   Updated: 2024/03/04 21:55:49 by sreerink      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,8 @@ bool	check_digits(char *argv[])
 			c = argv[i][j];
 			if ((c < 48 || c > 57) && (c != 32 && c != 45))
 				return (false);
-			if (c == 45 && (argv[i][j + 1] == 45 || !argv[i][j + 1]))
+			if ((c != 32 && argv[i][j + 1] == 45) \
+			|| (c == 45 && !argv[i][j + 1]))
 				return (false);
 			j++;
 		}
