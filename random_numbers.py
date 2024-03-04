@@ -9,7 +9,7 @@ numbers = []
 
 while i < n:
     x = random.randint(-2147483648,2147483647)
-    if not x in numbers:
+    if x not in numbers:
         if i != (n - 1):
             print(x, end=" ")
         else:
